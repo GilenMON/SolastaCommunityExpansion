@@ -11,9 +11,11 @@ namespace SolastaMulticlass.Patches.LevelUp
         [HarmonyPatch(typeof(CharacterEditionScreen), "LoadStagePanels")]
         internal static class CharacterLevelUpScreenLoadStagePanels
         {
-            internal static void Postfix(CharacterEditionScreen __instance, Dictionary<string, CharacterStagePanel> ___stagePanelsByName)
+            internal static void Postfix(
+                CharacterEditionScreen __instance,
+                ref Dictionary<string, CharacterStagePanel> ___stagePanelsByName)
             {
-                if (__instance is not CharacterLevelUpScreen characterLevelUpScreen)
+                if (__instance is not CharacterLevelUpScreen)
                 {
                     return;
                 }
@@ -22,18 +24,22 @@ namespace SolastaMulticlass.Patches.LevelUp
                 var stagePanelPrefabs = characterCreationScreen.GetField<CharacterCreationScreen, GameObject[]>("stagePanelPrefabs");
                 var classSelectionPanel = Gui.GetPrefabFromPool(stagePanelPrefabs[1], __instance.StagesPanelContainer).GetComponent<CharacterStagePanel>();
                 var deitySelectionPanel = Gui.GetPrefabFromPool(stagePanelPrefabs[2], __instance.StagesPanelContainer).GetComponent<CharacterStagePanel>();
-
-                characterLevelUpScreen.SetField("stagePanelsByName", new Dictionary<string, CharacterStagePanel>
+                var newLevelUpSequence = new Dictionary<string, CharacterStagePanel>
                 {
-                    { "ClassSelection", classSelectionPanel },
-                    { "LevelGains", ___stagePanelsByName["LevelGains"] },
-                    { "DeitySelection", deitySelectionPanel },
-                    { "SubclassSelection", ___stagePanelsByName["SubclassSelection"] },
-                    { "AbilityScores", ___stagePanelsByName["AbilityScores"] },
-                    { "FightingStyleSelection", ___stagePanelsByName["FightingStyleSelection"] },
-                    { "ProficiencySelection", ___stagePanelsByName["ProficiencySelection"] },
-                    { "", ___stagePanelsByName[""] }
-                });
+                    { "ClassSelection", classSelectionPanel }
+                };
+
+                foreach (var stagePanel in ___stagePanelsByName)
+                {
+                    newLevelUpSequence.Add(stagePanel.Key, stagePanel.Value);
+
+                    if (stagePanel.Key == "LevelGains")
+                    {
+                        newLevelUpSequence.Add("DeitySelection", deitySelectionPanel);
+                    }
+                }
+
+                ___stagePanelsByName = newLevelUpSequence;
             }
         }
     }
