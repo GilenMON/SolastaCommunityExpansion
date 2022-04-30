@@ -1756,7 +1756,11 @@
     "Definition:RecipeBasic_Arrows:6f5158a200a6dc047b3d8f85e0476019"
   ],
   "startingQuests": [
-    "Definition:DLC1_Scenario_Campaign:b2d5a840d78eef64b832f910d64b5394"
+    "Definition:DLC1_Scenario_Campaign:b2d5a840d78eef64b832f910d64b5394",
+    "Definition:Rebellion10_TalkToRenno_CompatibilityScenario:d587ef3ebd0bbb045a7ff8b179de8d43",
+    "Definition:DLC1_Lost_Valley_Quest_Giant_05_Rugan_CompatibilityScenario:6b7d517243afd64469b97f4ee213b850",
+    "Definition:DLC1_People08_Prisoners_CompatibilityScenario:7406fa0ef2643ad4281128cd7e0d5b1a",
+    "Definition:DLC1_Rebellion03_Charmer_CompatibilityScenario:e24d174c6a8b9e244b9f518e8a251daf"
   ],
   "journalStart": "Campaign/&DLC1_Journal_Start",
   "initialBestiaryContent": [

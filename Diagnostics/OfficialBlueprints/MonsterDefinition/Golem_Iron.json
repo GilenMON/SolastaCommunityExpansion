@@ -60,7 +60,8 @@
     "Definition:ConditionAffinityPetrifiedImmunity:7661e50eda0f67540b4bf452c5764ba1",
     "Definition:ConditionAffinityPoisonImmunity:558b2de37dbf89341ab0ed6c445873a6",
     "Definition:SavingThrowAffinitySpellResistance:d6341ebb2cb967949b4426e31e993b86",
-    "Definition:PowerIronGolemBreath:47ee827598e33fc4584bf3b555785ce3"
+    "Definition:PowerIronGolemBreath:47ee827598e33fc4584bf3b555785ce3",
+    "Definition:DamageAffinityFireImmunityIronGolem:92e4007d8e5fd7548bedc8e76c997d4a"
   ],
   "attackIterations": [
     {
